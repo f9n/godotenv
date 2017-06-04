@@ -1,2 +1,9 @@
 MongoDb="mongodb://localhost"
-Mlab = "as90"
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+AWS_SECRET_KEY=fake_secret
+AWS_ACCESS_KEY_ID=fake_key_id
