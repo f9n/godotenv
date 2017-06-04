@@ -7,6 +7,12 @@ import (
 	"strings"
 )
 
+func Godotenv(path string) map[string]string {
+	lines := readFile(path)
+	envs := dotenvParser(lines)
+	return envs
+}
+
 func readFile(path string) []string {
 	content, err := ioutil.ReadFile(path)
 	if err != nil {
