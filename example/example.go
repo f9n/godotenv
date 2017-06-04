@@ -6,10 +6,7 @@ import (
 )
 
 func main() {
-	lines := godotenv.ReadFile("./.example_env")
-	for i, v := range lines {
-		fmt.Println(i, " ", v)
-	}
-	godotenv.EnvParser(lines)
-	fmt.Println(godotenv.GlobalEnv)
+	env := godotenv.Godotenv("./.example_env")
+	fmt.Println(env)
+	fmt.Println(env["MongoDb"])
 }
