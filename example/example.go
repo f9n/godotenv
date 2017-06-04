@@ -10,5 +10,6 @@ func main() {
 	for i, v := range lines {
 		fmt.Println(i, " ", v)
 	}
-	godotenv.EnvParser(lines[0])
+	godotenv.EnvParser(lines)
+	fmt.Println(godotenv.GlobalEnv)
 }
