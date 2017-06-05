@@ -27,7 +27,7 @@ func dotenvParser(lines []string) map[string]string {
 	for _, line := range lines {
 		line = cleanLine(line)
 		if line != "" {
-			err, key, value := parseLine(line)
+			key, value, err := parseLine(line)
 			if !err {
 				dotenvmap[key] = value
 			}
@@ -42,14 +42,14 @@ func cleanLine(line string) string {
 	return line
 }
 
-func parseLine(line string) (bool, string, string) {
+func parseLine(line string) (string, string, bool) {
 	r, err := regexp.Compile(`^(\w+)=(.+)$`)
 	if err != nil {
 		fmt.Println(err)
 	}
 	result := r.FindStringSubmatch(line)
 	if len(result) > 0 {
-		return false, result[1], result[2]
+		return result[1], result[2], false
 	}
-	return true, "", ""
+	return "", "", true
 }
