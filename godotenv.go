@@ -25,12 +25,21 @@ func readFile(path string) []string {
 func dotenvParser(lines []string) map[string]string {
 	var dotenvmap = make(map[string]string, 5)
 	for _, line := range lines {
-		err, key, value := parseLine(line)
-		if !err {
-			dotenvmap[key] = value
+		line = cleanLine(line)
+		if line != "" {
+			err, key, value := parseLine(line)
+			if !err {
+				dotenvmap[key] = value
+			}
 		}
 	}
 	return dotenvmap
+}
+
+func cleanLine(line string) string {
+	line = strings.Split(line, "#")[0]
+	line = strings.Trim(line, " ")
+	return line
 }
 
 func parseLine(line string) (bool, string, string) {
