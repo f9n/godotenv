@@ -49,7 +49,9 @@ func parseLine(line string) (string, string, bool) {
 	}
 	result := r.FindStringSubmatch(line)
 	if len(result) > 0 {
-		return result[1], result[2], false
+		k := strings.Trim(result[1], "\"")
+		v := strings.Trim(result[2], "\"")
+		return k, v, false
 	}
 	return "", "", true
 }
